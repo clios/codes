@@ -1,6 +1,9 @@
 <script lang="ts">
-	import '../app.css';
-	let { children } = $props();
+  import "../app.css";
+  import "@fontsource-variable/nunito-sans";
+  let { children } = $props();
 </script>
 
-{@render children()}
+<div class="bg-bg text-fg">
+  {@render children()}
+</div>
