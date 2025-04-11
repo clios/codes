@@ -36,11 +36,14 @@
 
 <button
   class={twMerge(
-    "relative flex items-center gap-1", // layout and positioning
-    "h-min w-max cursor-pointer ring", // visual
+    "hover:z-1 relative flex items-center gap-1", // layout and positioning
+    "h-min w-max cursor-pointer ring ring-primary transition-all", // visual
 
     // VARIANTS
-    variant === "default" && "bg-fg text-bg border-primary",
+    variant === "default" && [
+      "text-bg bg-fg",
+      "active:ring-offset-0 active:ring-2 focus:ring-offset-2",
+    ],
 
     variant === "inverted" && "bg-bg text-fg",
     variant === "primary" && "bg-primary text-primary-fg border-primary",
@@ -49,10 +52,11 @@
     variant === "destructive" &&
       "bg-destructive text-destructive-fg border-destructive outline-destructive",
     variant === "outline" && "text-fg border-fg bg-none",
+
+    // VARIANT: GHOST
     variant === "ghost" && [
-      "text-fg ring-0 bg-none",
-      "hover:bg-base-100",
-      "active:bg-base-200",
+      "text-fg ring-0 bg-none ring-primary",
+      "active:ring-offset-0 active:ring-2 focus:ring-offset-2 hover:ring-offset-2",
     ],
 
     // SIZES
@@ -74,7 +78,7 @@
     disabled &&
       "border-disabled text-disabled-fg bg-disabled cursor-not-allowed outline-none",
 
-    className
+    className,
   )}
   disabled={loading || disabled}
   {...props}
@@ -88,7 +92,7 @@
 {#snippet IconSpinner()}
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="text-primary absolute right-1/2 bottom-1/2 size-4 translate-x-1/2 translate-y-1/2 animate-spin"
+    class="right-1/2 bottom-1/2 absolute size-4 text-primary translate-x-1/2 translate-y-1/2 animate-spin"
     viewBox="0 0 16 16"
   >
     <path

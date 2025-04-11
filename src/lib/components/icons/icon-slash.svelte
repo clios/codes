@@ -14,9 +14,13 @@
 <!-- Note: update proper viewBox value -->
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  class={twMerge("max-w-3 min-w-3", className)}
+  class={twMerge("min-w-3 max-w-3", className)}
   viewBox="0 0 44 63"
   {...props}
 >
-  <path d="M39.5 0L0 62.5H4L43.5 0H39.5Z" fill="currentColor" />
+  <path
+    d="M39.5 0L0 62.5H4L43.5 0H39.5Z"
+    fill="currentColor"
+    stroke-width="2"
+  />
 </svg>

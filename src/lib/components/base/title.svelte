@@ -13,7 +13,10 @@
 </script>
 
 {#if level === 1}
-  <h1 class={twMerge("text-4xl", className)} {...props}>
+  <h1
+    class={twMerge("text-4xl sm:text-5xl md:text-6xl lg:text-7xl", className)}
+    {...props}
+  >
     {@render children?.()}
   </h1>
 {:else if level === 2}
