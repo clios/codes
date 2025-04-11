@@ -12,7 +12,7 @@
     | "outline"
     | "ghost";
 
-  type Props = {
+  type Props = HTMLButtonAttributes & {
     children?: Snippet;
     class?: string | null;
     disabled?: boolean;
@@ -20,7 +20,7 @@
     loading?: boolean;
     size?: "default" | "icon" | "small" | "fit";
     variant?: Variant;
-  } & HTMLButtonAttributes;
+  };
 
   let {
     children,
@@ -36,16 +36,25 @@
 
 <button
   class={twMerge(
+    "h-min w-max", // size
     "hover:z-1 relative flex items-center gap-1", // layout and positioning
-    "h-min w-max cursor-pointer ring ring-primary transition-all", // visual
+    "ring ring-primary ring-offset-bg focus:ring-2", // ring
+    "cursor-pointer transition-all", // visual
 
-    // VARIANTS
+    // VARIANT: DEFAULT
     variant === "default" && [
-      "text-bg bg-fg",
-      "active:ring-offset-0 active:ring-2 focus:ring-offset-2",
+      "text-bg bg-fg", // text and background
+      "hover:ring-offset-2 focus:ring-offset-2", // hover and focus
+      "active:ring-offset-0 active:ring-2", // active
     ],
 
-    variant === "inverted" && "bg-bg text-fg",
+    // VARIANT: INVERTED
+    variant === "inverted" && [
+      "text-fg bg-bg", // text and background
+      "hover:ring-offset-2 focus:ring-offset-2", // hover and focus
+      "active:ring-offset-0 active:ring-2", // active
+    ],
+
     variant === "primary" && "bg-primary text-primary-fg border-primary",
     variant === "secondary" &&
       "bg-secondary text-secondary-fg border-secondary",
@@ -55,8 +64,10 @@
 
     // VARIANT: GHOST
     variant === "ghost" && [
-      "text-fg ring-0 bg-none ring-primary",
-      "active:ring-offset-0 active:ring-2 focus:ring-offset-2 hover:ring-offset-2",
+      "text-fg bg-none", // text and background
+      "focus:text-primary focus:outline-none focus:ring-0", // focus
+      "hover:text-primary active:text-fg", // hover and active
+      "ring-0", // ring
     ],
 
     // SIZES
@@ -78,7 +89,7 @@
     disabled &&
       "border-disabled text-disabled-fg bg-disabled cursor-not-allowed outline-none",
 
-    className,
+    className
   )}
   disabled={loading || disabled}
   {...props}

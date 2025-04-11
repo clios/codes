@@ -60,10 +60,12 @@
   /* Default border color. */
   --color-border: var(--color-base-300);
 
+  /* Default ring color. */
+  --color-ring: var(--color-base-950);
+
   /* Default border radius. */
   --radius: 0.25rem;
 }
-
 
 .dark {
   /* Set your primary color shades */
