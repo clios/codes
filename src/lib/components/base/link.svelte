@@ -15,8 +15,8 @@
   class={twMerge(
     "group relative rounded w-fit cursor-pointer", // base
     "hover:text-primary", // hovering
-    "active:outline-2 active:outline-offset-0", // active
-    className,
+    "active:text-fg", // active
+    className
   )}
   {...props}
 >

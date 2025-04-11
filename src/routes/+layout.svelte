@@ -6,6 +6,6 @@
 </script>
 
 <ModeWatcher defaultMode="system" />
-<div class="bg-bg text-fg">
+<div class="bg-bg text-fg bg-gradient-to-b from-fg/5 via-bg to-fg/5">
   {@render children()}
 </div>
